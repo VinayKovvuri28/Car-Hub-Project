@@ -1,0 +1,23 @@
+<!--
+  @description       : 
+  @author            : Vinay Kovvuri
+  @group             : 
+  @last modified on  : 01-24-2024
+  @last modified by  : Vinay Kovvuri
+-->
+<template>
+  <lightning-card title="Cars Available" icon-name="standard:account">
+      <div class="slds-p-around_medium wrapper">
+          <template lwc:if={cars.length}>
+              <div class="content">
+                  <template for:each={cars} for:item="car">
+                     <c-car-tile key={car.Id} car={car} onselected={handleCarSelected}></c-car-tile> 
+                  </template>
+              </div>
+          </template>
+          <template lwc:else>
+            <c-placeholder placeholder={placeholder}></c-placeholder>
+          </template>
+      </div>
+  </lightning-card>
+</template>

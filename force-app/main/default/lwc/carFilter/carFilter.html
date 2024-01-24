@@ -1,0 +1,64 @@
+<!--
+  @description       : 
+  @author            : Vinay Kovvuri
+  @group             : 
+  @last modified on  : 01-23-2024
+  @last modified by  : Vinay Kovvuri
+-->
+<template>
+    <lightning-card title="Filter" icon-name="standard:calibration">
+        <div class="slds-m-horizontal_medium">
+            <label><strong>Search Key</strong></label>
+            <lightning-input label="Search Key" 
+                             type="search" 
+                             class="slds-p-bottom_small" 
+                             variant="label-hidden"
+                             value={filters.searchKey} 
+                             onchange={handleSearchKeyChange}>
+            </lightning-input>
+            <section class="slider_section slds-p-bottom_small">
+                <label><strong>Max Price</strong></label>
+                <lightning-slider label="Max Price" 
+                                  step="100" 
+                                  variant="label-hidden"
+                                  min="0" 
+                                  max="1799900" 
+                                  value={filters.maxPrice}  
+                                  onchange={handleMaxPriceChange} >
+                </lightning-slider>
+            </section>
+            <section class="category_section slds-p-bottom_small">
+                <label><strong>Category</strong></label>
+                <template lwc:if={categoryOptions}>
+                    <lightning-checkbox-group name="category"
+                                              label="Category"
+                                              variant="label-hidden"
+                                              options={categoryOptions}
+                                              value={filters.selectedCategory}
+                                              onchange={categorySelectedHandle}>
+                    </lightning-checkbox-group>
+                    <!-- <p>Selected Values are: {selectedCategory}</p> -->
+                </template>
+                <template lwc:else>
+                    <div>{categoryError}</div>
+                </template>
+            </section>
+            <section class="make_section slds-p-bottom_small">
+                <label><strong>Make</strong></label>
+                <template lwc:if={makeOptions}>
+                    <lightning-checkbox-group name="make"
+                                              label="Make"
+                                              variant="label-hidden"
+                                              options={makeOptions}
+                                              value={filters.selectedMake}
+                                              onchange={makeSelectedHandle}>
+                    </lightning-checkbox-group>
+                    <!-- <p>Selected Values are: {selectedMake}</p> -->
+                </template>
+                <template lwc:else>
+                    <div>{categoryError}</div>
+                </template>
+            </section>
+        </div>
+    </lightning-card>
+</template>

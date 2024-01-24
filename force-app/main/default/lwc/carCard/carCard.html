@@ -1,0 +1,33 @@
+<!--
+  @description       : 
+  @author            : Vinay Kovvuri
+  @group             : 
+  @last modified on  : 01-24-2024
+  @last modified by  : Vinay Kovvuri
+-->
+<template>
+    <lightning-card title={carName} icon-name="standard:apex_plugin">
+        <template lwc:if={recordId}>
+            <lightning-button-icon 
+                icon-name="utility:travel_and_places" 
+                slot="actions" 
+                onclick={handleNavigateToRecord} >
+            </lightning-button-icon>
+            <div class="slds-m-horizontal_medium slds-m-bottom_large">
+                <img src={carImage} alt={carName}/>
+                <lightning-record-view-form record-id={recordId} object-api-name={carObjectApiName} density="compact">
+                    <lightning-output-field field-name={categoryField}></lightning-output-field>
+                    <lightning-output-field field-name={makeField}></lightning-output-field>
+                    <lightning-output-field field-name={msrpField}></lightning-output-field>
+                    <section>Other Features</section>
+                    <lightning-output-field field-name={fuelField}></lightning-output-field>
+                    <lightning-output-field field-name={controlField}></lightning-output-field>
+                    <lightning-output-field field-name={seatsField}></lightning-output-field>
+                </lightning-record-view-form>  
+            </div>
+        </template>
+        <template lwc:else>
+            <c-placeholder placeholder={placeholder}></c-placeholder>
+        </template>
+    </lightning-card>
+</template>
